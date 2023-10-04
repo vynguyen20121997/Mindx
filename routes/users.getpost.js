@@ -2,7 +2,7 @@ import { Router } from "express";
 const postRoute = Router();
 
 postRoute.get("/posts", async (req, res) => {
-  access_token = req.headers.get("Authorization");
+  access_token = req.headers.authorization;
   if (!access_token) return json({ error: "Access token is required" }), 401;
   else
     res.json({
