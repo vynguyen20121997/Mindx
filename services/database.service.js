@@ -1,37 +1,30 @@
 import { config } from "dotenv";
 import { MongoClient, ServerApiVersion } from "mongodb";
+const url =
+  //   "<mongodb+srv://nguyentuongvy20121997:WLLZp6hdLkbgA99K@movieproject.mo3yivl.mongodb.net/>";
+  "mongodb+srv://nguyentuongvy20121997:WLLZp6hdLkbgA99K@cluster0.ia5o7b6.mongodb.net/";
 
-// Replace the placeholder with your Atlas connection string
-const uri =
-  "<mongodb+srv://nguyentuongvy20121997:nguyenhoangvy@movieproject.mo3yivl.mongodb.net/>";
-
-// Create a MongoClient with a MongoClientOptions object to set the Stable API version
 class DatabaseService {
   constructor() {
-    this.db = client.db("admin");
+    this.client = new MongoClient(url);
+    this.db = this.client.db("users");
+  }
+
+  async connect() {
+    try {
+      await this.db.command({ ping: 1 });
+      console.log(
+        "Pinged your deployment. You successfully connected to MongoDB!"
+      );
+    } catch (error) {
+      console.log("error", error);
+      throw error;
+    }
+  }
+  get users() {
+    return this.db.collection("users");
   }
 }
-const client = new MongoClient(uri, {
-  serverApi: {
-    version: ServerApiVersion.v1,
-    strict: true,
-    deprecationErrors: true,
-  },
-});
 
-async function run() {
-  try {
-    // Connect the client to the server (optional starting in v4.7)
-    await client.connect();
-
-    // Send a ping to confirm a successful connection
-    await client.db("admin").command({ ping: 1 });
-    console.log(
-      "Pinged your deployment. You successfully connected to MongoDB!"
-    );
-  } finally {
-    // Ensures that the client will close when you finish/error
-    await client.close();
-  }
-}
-run().catch(console.dir);
+const databaseService = new DatabaseService();
+export default databaseService;
