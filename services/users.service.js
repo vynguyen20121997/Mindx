@@ -12,6 +12,11 @@ class UsersService {
     const access_token = await this.signAccessToken(user_id);
     return { access_token };
   }
+  async register(payload) {
+    await databaseService.users.insertOne({ ...payload });
+    const access_token = await this.signAccessToken(user_id);
+    return { access_token };
+  }
 }
 const userService = new UsersService();
 export default userService;

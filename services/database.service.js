@@ -24,6 +24,15 @@ class DatabaseService {
   get users() {
     return this.db.collection("users");
   }
+  get movies() {
+    return this.db.collection("movies");
+  }
+  get genres() {
+    return this.db.collection("genres");
+  }
+  get actors() {
+    return this.db.collection("actors");
+  }
 }
 
 const databaseService = new DatabaseService();
