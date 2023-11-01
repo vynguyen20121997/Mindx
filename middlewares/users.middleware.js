@@ -12,12 +12,11 @@ export const loginValidator = async (req, res, next) => {
   next();
 };
 export const registerValidator = async (req, res, next) => {
-  const { email, password, confirm_password } = req.body;
-  if (!(email && password && confirm_password)) {
+  const { email, password } = req.body;
+  if (!(email && password)) {
     throw new Error("Nhap thieu");
-  }
-  if (!(password === confirm_password)) {
-    throw new Error("sai passs");
+  } else {
+    throw new Error("bi gi roi");
   }
   next();
 };

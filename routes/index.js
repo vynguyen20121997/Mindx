@@ -1,9 +1,9 @@
 import { Router } from "express";
-import userRoute from "./users.routes.js";
+import router from "./auth.route.js";
 import postRoute from "./users.getpost.js";
 const rootRoute = Router();
 
-rootRoute.use("/users", userRoute);
-rootRoute.use("/users", postRoute);
+rootRoute.use("/user", router);
+rootRoute.use("", postRoute);
 
 export default rootRoute;
