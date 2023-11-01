@@ -5,7 +5,6 @@ import databaseService from "../services/database.service.js";
 import { signToken } from "../component/services.js";
 import { uuid } from "uuidv4";
 import { ObjectId } from "mongodb";
-import * as yup from "yup;";
 const registerController = asyncHandler(async (req, res, next) => {
   // const result = await userService.register(req.body);
 
