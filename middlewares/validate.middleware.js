@@ -1,4 +1,4 @@
-import * as Yup from "Yup";
+import * as Yup from "yup";
 
 const registerSchema = Yup.object().shape({
   email: Yup.string().email().required(),
@@ -7,7 +7,7 @@ const registerSchema = Yup.object().shape({
 
 const loginShema = Yup.object().shape({
   email: Yup.string().email().required(),
-  password: Yup.string().min(6).required(),
+  password: yup.string().min(6).required(),
 });
 
 const AuthValidator = {
