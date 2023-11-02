@@ -8,10 +8,10 @@ import { ObjectId } from "mongodb";
 const registerController = asyncHandler(async (req, res, next) => {
   // const result = await userService.register(req.body);
 
-  const { email, password } = req.body;
+  const { email, password, fullname } = req.body;
 
   //   1. Validation
-  if (!(email && password)) {
+  if (!(email && password && fullname)) {
     return res.status(400).json({
       message: "thieu gi kia",
     });
@@ -31,6 +31,7 @@ const registerController = asyncHandler(async (req, res, next) => {
 
   // // 3. Create new user
   const newUser = {
+    fullname,
     email,
     password: hashedPassword,
     id: uuid(),
