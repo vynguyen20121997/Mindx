@@ -11,7 +11,6 @@ const authMiddleware = (req, res, next) => {
     const secretOrPublicKey = "LELEL@";
     const decoded = jwt.verify(accessToken, secretOrPublicKey);
     req.user = decoded;
-    console.log("decoded", decoded);
     next();
   } catch (error) {
     if (error instanceof jwt.TokenExpiredError) {
