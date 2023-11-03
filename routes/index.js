@@ -1,6 +1,6 @@
 import { Router } from "express";
 import router from "./auth.route.js";
-import movieRoute from "./users.getmovies.js/index.js";
+import movieRoute from "./users.getmovies.js";
 import genreRoute from "./users.getgenres.js";
 const rootRoute = Router();
 
