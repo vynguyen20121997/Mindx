@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 
 const authMiddleware = (req, res, next) => {
   try {
-    const accessToken = req.headers["x-access-token"];
+    const accessToken = req.headers["access-token"];
     if (!accessToken) {
       return res.status(400).json({
         message: "Missing access token",
