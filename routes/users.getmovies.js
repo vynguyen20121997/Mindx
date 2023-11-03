@@ -1,9 +1,9 @@
 import { Router } from "express";
 import databaseService from "../services/database.service.js";
-const postRoute = Router();
+const genreRoute = Router();
 
-postRoute.get("/movies", async (req, res) => {
+genreRoute.get("/movies", async (req, res) => {
   const movies = await databaseService.movies.find({}).toArray();
   res.json(movies);
 });
-export default postRoute;
+export default genreRoute;
