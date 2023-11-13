@@ -2,8 +2,7 @@ import databaseService from "../services/database.service.js";
 
 export const loginValidator = async (req, res, next) => {
   const { email, password } = req.body;
-  const user = await databaseService.users.findOne({ email, password });
-  console.log("user", user);
+  const user = await databaseService.Users.findOne({ email, password });
 
   if (!user) {
     throw new Error("email voi pass sai roi kia");

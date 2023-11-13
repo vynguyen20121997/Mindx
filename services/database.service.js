@@ -7,7 +7,7 @@ const url =
 class DatabaseService {
   constructor() {
     this.client = new MongoClient(url);
-    this.db = this.client.db("users");
+    this.db = this.client.db("Users");
   }
 
   async connect() {
@@ -21,17 +21,14 @@ class DatabaseService {
       throw error;
     }
   }
-  get users() {
-    return this.db.collection("users");
+  get Users() {
+    return this.db.collection("Users");
   }
-  get movies() {
-    return this.db.collection("movies");
+  get Orders() {
+    return this.db.collection("Orders");
   }
-  get genres() {
-    return this.db.collection("genres");
-  }
-  get actors() {
-    return this.db.collection("actors");
+  get Inventory() {
+    return this.db.collection("Inventory");
   }
 }
 

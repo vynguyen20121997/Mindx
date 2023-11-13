@@ -18,7 +18,7 @@ const registerController = asyncHandler(async (req, res, next) => {
   }
 
   // 2. Check duplicate
-  const existingUser = await databaseService.users.findOne({ email });
+  const existingUser = await databaseService.Users.findOne({ email });
 
   if (existingUser) {
     res.status(400);
@@ -39,9 +39,9 @@ const registerController = asyncHandler(async (req, res, next) => {
   };
 
   // 4. Add to database
-  await databaseService.users.insertOne(newUser);
+  await databaseService.Users.insertOne(newUser);
 
-  const createdUser = await databaseService.users.findOne(
+  const createdUser = await databaseService.Users.findOne(
     { email },
     {
       projection: {
@@ -61,7 +61,7 @@ const loginControler = async (req, res) => {
   const { email, password } = req.body || {};
 
   // 2. Check email
-  const existingUser = await databaseService.users.findOne({ email });
+  const existingUser = await databaseService.Users.findOne({ email });
   if (!existingUser) {
     res.status(400);
     throw new Error("Invalid credentials");
@@ -102,7 +102,7 @@ const loginControler = async (req, res) => {
 const fetchCurrentUser = asyncHandler(async (req, res) => {
   const userId = req.user.id;
 
-  const currentUser = await databaseService.users.findOne(
+  const currentUser = await databaseService.Users.findOne(
     { _id: new ObjectId(userId) },
     {
       projection: {

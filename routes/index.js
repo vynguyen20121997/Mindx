@@ -1,11 +1,9 @@
 import { Router } from "express";
 import router from "./auth.route.js";
-import movieRoute from "./users.getmovies.js";
-import genreRoute from "./users.getgenres.js";
+import inventoryRoute from "./users.getInventory.js";
 const rootRoute = Router();
 
 rootRoute.use("/user", router);
-rootRoute.use("", movieRoute);
-rootRoute.use("", genreRoute);
+rootRoute.use("", inventoryRoute);
 
 export default rootRoute;
